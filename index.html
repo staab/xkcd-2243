@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89355375-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-89355375-2');
+    </script>
+    <style type="text/css">
+      body {
+        font-family: arial;
+      }
+
+      #result {
+        width: 80%;
+        margin: 100px auto;
+        text-align: center;
+        font-variant: small-caps;
+        font-size: 24px;
+        font-family: 'Shadows Into Light Two', cursive;
+      }
+
+      .github-link {
+        position: fixed;
+        color: #ccc;
+        right: 10px;
+        bottom: 10px;
+        font-size: 12px;
+        text-decoration: none;
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
+    <script type="text/javascript">
+      var template = choice([
+        "In this Star Wars movie, our heroes return to take on the first order and new villain",
+        fork([
+          "Kylo Ren",
+          "malloc",
+          "Darth Sebelius",
+          "Theranos",
+          "Lord Juul",
+        ]),
+        "with help from their friend",
+        fork([
+          "Kim Spacemeasurer.",
+          "Teen Yoda.",
+          "Dab Tweetdeck.",
+          "Yaz Progestin.",
+          "TI-83.",
+        ]),
+        "Rey builds a new lightsaber with a",
+        fork([
+          "beige",
+          "ochre",
+          "mauve",
+          "aquamarine",
+          "taupe",
+        ]),
+        "blade, and they head out to confront the First Order's new superweapon, the",
+        fork([
+          "Sun Obliterator,",
+          "Moonsquisher,",
+          "World Eater,",
+          "Planet Zester,",
+          "Superconducting Supercollider,",
+        ]),
+        "a space station capable of",
+        fork([
+          "blowing up a planet with a bunch of beams of energy that combine into one.",
+          "blowing up a bunch of planets with one beam of energy that splits into many.",
+          "cutting a planet in half and smashing the halves together like two cymbals.",
+          "increasing the CO2 levels in a planet's atmosphere, causing rapid heating.",
+          "triggering the end credits before the movie is done.",
+        ]),
+        "They unexpectedly join forces with their old enemy",
+        fork([
+          "Boba Fett,",
+          "Salacious Crumb,",
+          "The Space Slug,",
+          "the bottom half of Darth Maul,",
+          "Youtube commenters,",
+        ]),
+        "and destroy the superweapon in a battle featuring",
+        fork([
+          "a bow that shoots little lightsaber-headed arrows.",
+          "X-Wings and TIE fighters dodging the giant letters of the opening crawl.",
+          "a Sith educational display that uses Force Lightning to demonstrate the dielectric breakdown of air.",
+          "Kylo Ren putting on another helmet over his smaller one.",
+          "a Sith car wash where the bristles on the brushes are little lightsabers.",
+        ]),
+        "P.S. Rey's parents are",
+        fork([
+          "Luke",
+          "Leia",
+          "Han",
+          "Obi-Wan",
+          "a random junk trader",
+        ]),
+        "and",
+        fork([
+          "Poe.",
+          "BB-8.",
+          "Amilyn Holdo.",
+          "Laura Dern.",
+          "a random junk trader.",
+          "that one droid from the Jawa Sandcrawler that says Gonk.",
+        ]),
+      ])
+
+      function fork(choices) {
+        return {type: 'fork', members: choices}
+      }
+
+      function choice(options) {
+        return {type: 'choice', members: options}
+      }
+
+      function randomChoice(choices) {
+        return choices[Math.floor(Math.random() * choices.length)]
+      }
+
+      function process(element) {
+        if (element.type === 'fork') {
+          return process(randomChoice(element.members))
+        } else if (element.type === 'choice') {
+          return element.members.map(process).join(' ')
+        } else {
+          return element
+        }
+      }
+
+      function regen() {
+        document.querySelector('#result').innerText = process(template)
+          .replace(' ?', '?')
+      }
+
+      document.addEventListener('DOMContentLoaded', regen)
+    </script>
+  </head>
+  <body>
+    <a href="https://xkcd.com/2243/">Source: xkcd</a>
+    &nbsp;
+    <button id="regen" onclick="regen()">Generate</button>
+    <div id="result"></div>
+    <a class="github-link" href="https://github.com/staab/xkcd-2243">View on GitHub</a>
+  </body>
+</html>
